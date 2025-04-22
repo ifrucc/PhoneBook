@@ -1,12 +1,13 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
+const path = require('path')
 
 
 const app = express()
 
 app.use(express.json())
-
+app.use(express.static(path.join(__dirname, 'build/')));
 morgan.token('content-body', function (req, res) { return JSON.stringify(req.body) })
 const format = ':method :url :status :res[content-length] - :response-time ms :content-body'
 app.use(morgan(format))
@@ -65,14 +66,13 @@ let persons = [
 ]
 app.get('/', (req, res) => {
 
-    res.send("ok")
+    res.sendFile(path.join(__dirname, 'build/', 'index.html'));
 
 })
 
-
 app.get('/api/persons', (req, res) => {
 
-    res.send(persons)
+    res.json(persons)
 
 })
 
