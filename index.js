@@ -13,7 +13,7 @@ const format = ':method :url :status :res[content-length] - :response-time ms :c
 app.use(morgan(format))
 
 let options={
-    origin : ['http://localhost:3000'],
+   
     methods: 'GET,POST,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'] 
   }
