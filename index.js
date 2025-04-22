@@ -63,11 +63,16 @@ let persons = [
     }
 
 ]
+app.get('/', (req, res) => {
+
+    res.send("ok")
+
+})
 
 
 app.get('/api/persons', (req, res) => {
 
-    res.redirect('./build/index.js')
+    res.send(persons)
 
 })
 
